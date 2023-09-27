@@ -199,6 +199,12 @@ Use `terraform plan` to see the changeset, showing the current state and propose
 Use `terraform apply` to run the planned changes. It will ask for confirmation by default. 
 Use `terraform apply --auto-approve` to skip confirmation.
 
+#### Terraform Destroy
+
+`terraform destroy`
+This command will destroy all resources that Terraform has managed. 
+To bypass the approval prompt, use the auto-approve flag: `terraform destroy --auto-approve`.
+
 ### Terraform Lock Files
 
 `.terraform.lock.hcl` holds the specific versions of providers or modules for the project. 
