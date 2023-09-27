@@ -170,4 +170,50 @@ If it is successful, you should see a JSON payload returned that looks like this
 ```
 
 To use the AWS CLI, we need to generate credentials from the IAM User
- 
+
+## Terraform Basics
+
+### Terraform Registry
+
+Terraform uses providers and modules from the [Terraform Registry](https://registry.terraform.io).
+
+- **Providers**: Interfaces to APIs, allowing the creation of resources in Terraform.
+- **Modules**: Help in making Terraform code modular, portable, and shareable.
+
+[Random Terraform Provider](https://registry.terraform.io/providers/hashicorp/random/)
+
+### Terraform Console
+
+View all Terraform commands by typing `terraform`.
+
+#### Terraform Init
+
+Run `terraform init` at the beginning of a new project to download the necessary binaries for the Terraform providers.
+
+#### Terraform Plan
+
+Use `terraform plan` to see the changeset, showing the current state and proposed changes to your infrastructure. 
+
+#### Terraform Apply
+
+Use `terraform apply` to run the planned changes. It will ask for confirmation by default. 
+Use `terraform apply --auto-approve` to skip confirmation.
+
+### Terraform Lock Files
+
+`.terraform.lock.hcl` holds the specific versions of providers or modules for the project. 
+**Commit this file to your Version Control System (VCS)**, e.g., GitHub.
+
+### Terraform State Files
+
+`terraform.tfstate` holds the current state of your infrastructure. 
+
+- **Do not commit this file to your VCS.** 
+- This file contains sensitive data. 
+- Losing this file means losing the state information of your infrastructure. 
+
+`terraform.tfstate.backup` is the backup of the previous state.
+
+### Terraform Directory
+
+`.terraform` directory holds the binaries of Terraform providers.
