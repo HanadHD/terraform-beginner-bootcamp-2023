@@ -257,3 +257,4 @@ Add the following JSON code to the file, replacing "YOUR-TERRAFORM-CLOUD-TOKEN" 
   }
 }
 ```
+We have automated this workaround process using the following bash script ./bin/generate_tfrc_credentials
