@@ -223,3 +223,37 @@ To bypass the approval prompt, use the auto-approve flag: `terraform destroy --a
 ### Terraform Directory
 
 `.terraform` directory holds the binaries of Terraform providers.
+
+## Issues with Terraform Cloud Login and Gitpod Workspace
+
+While attempting to run `terraform login`, the command should ideally open a view to generate a token. 
+However, this functionality doesn’t work as expected in the Gitpod VSCode in the browser, although it works locally in Gitpod VSCode.
+
+ ## Workaround 
+  If you are using Gitpod VSCode in the browser, manually generate a token in Terraform Cloud.
+
+Navigate to the following URL to generate a token:
+
+```
+https://app.terraform.io/app/settings/tokens
+```
+
+
+After generating the token, manually create the credentials file with the following commands:
+
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json
+open /home/gitpod/.terraform.d/credentials.tfrc.json
+```
+
+Add the following JSON code to the file, replacing "YOUR-TERRAFORM-CLOUD-TOKEN" with your actual token:
+
+```json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "YOUR-TERRAFORM-CLOUD TOKEN"
+    },
+  }
+}
+```
