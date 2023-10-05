@@ -125,3 +125,45 @@ Example for AWS S3 bucket:
 For resources changed or deleted manually "ClickOps':
 
 Running `terraform plan` aims to revert infrastructure to the expected state, correcting configuration drift.
+
+## Fix using Terraform Refresh
+
+```sh
+terraform apply -refresh-only -auto-approve
+```
+
+## Terraform Modules
+
+
+### Terraform Module Structure
+
+Modules allow you to package Terraform configurations for reuse.
+
+When locally developing modules, it's a common practice to organize them inside a modules directory. However, you're free to choose any name you prefer.
+
+### Passing Input Variables
+
+You can provide values to a module using input variables. Ensure the module declares these variables in its variables.tf:
+
+```go
+modules "terrahouse_aws" {
+    source = "./modules/terrahouse_aws"
+    user_uuid = var.user_uuid
+    bucket_name = var.bucket_name
+}
+```
+
+### Module Sources
+
+The source argument in a module block allows you to specify where the module should be sourced from. This can be:
+
+- locally
+- GitHub
+- Terraform Registry
+
+```go
+modules "terrahouse_aws" {
+    source = "./modules/terrahouse_aws"
+}
+```
+(https://developer.hashicorp.com/terraform/language/modules/sources)

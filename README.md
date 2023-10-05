@@ -1,4 +1,4 @@
-# Terraform Beginner Bootcamp 2023
+# Terraform Beginner Bootcamp 2023 ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)
 
 ![architectural-diagram](https://github.com/omenking/terraform-beginner-bootcamp-2023/assets/7776/ab015431-2d14-4910-aa37-be4807b2b905)
 
