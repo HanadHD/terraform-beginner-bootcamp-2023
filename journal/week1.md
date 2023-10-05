@@ -95,4 +95,33 @@ variable "region" {
 }
 ```
 
+## Dealing with Configuration Drift
 
+When your infrastructure's actual state diverges from the Terraform configuration, you're dealing with configuration drift.
+
+## What happens if we lose our state file?
+
+If you lose your **Statefile**, you most likely have to tear down all your cloud infrastructure manually. 
+
+You can use terraform import but it won't work for all cloud resources. You need to check the terraform providers documentation for which resources support import.
+
+### Fix Missing Resources with Terraform Import
+
+Manual Destruction: You might have to manually delete all associated cloud infrastructure for consistency. 
+
+Use of terraform import:
+
+Importing can help re-establish some lost links, but it doesn't work universally.
+Example for AWS S3 bucket:
+
+`terraform import aws_s3_bucket.website_bucket`
+
+[Terraform Import](https://developer.hashicorp.com/terraform/language/import)
+
+[AWS S3 Bucket Import](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import)
+
+### Fix Manual Configuration
+
+For resources changed or deleted manually "ClickOps':
+
+Running `terraform plan` aims to revert infrastructure to the expected state, correcting configuration drift.
