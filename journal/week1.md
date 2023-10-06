@@ -245,3 +245,37 @@ resource "aws_s3_object" "index_html" {
   etag = filemd5(var.index_html_filepath)
 } 
 ```  
+## Terraform Locals
+
+Terraform locals provide a way to define local variables. 
+They are useful for transforming and organizing data, giving you a more structured way to reference variables within your configuration.
+
+```go
+locals {
+  s3_origin_id = "myS3Origin"
+}
+```
+
+[Locals Values](https://developer.hashicorp.com/terraform/language/values/locals)
+
+## Terraform Data Sources
+
+Terraform data sources allow us to fetch information about existing cloud resources, making it easy to reference them in our Terraform configuration without explicitly defining them.
+
+```go
+data "aws_caller_identity" "current" {}
+```
+
+[Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
+
+## Working with JSON
+
+Terraform provides functions like jsonencode which help in converting HCL structures into JSON format.
+
+```go
+jsonencode({"hello"="world"})
+
+{"hello":"world"}
+```
+
+[Jsonencode](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
