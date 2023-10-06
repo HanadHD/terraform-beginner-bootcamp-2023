@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error</title>
+    <title>Error - Terraform</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(#000000, #5C4EE5);  
+            background: linear-gradient(#000000, #5C4EE5);
             color: white;
             display: flex;
             flex-direction: column;
@@ -23,19 +23,30 @@
             border-radius: 5px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 20px; 
+            margin-bottom: 20px;  
             color: red;
         }
         p {
             max-width: 600px;
             text-align: center;
         }
+      
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px; 
+                padding: 10px 20px;
+            }
+            p {
+                font-size: 16px; 
+                margin: 0 10px; 
+            }
+        }
     </style>
 </head>
 <body>
 
-<h1>Error Found!</h1>
-<p>Oops! Something went wrong. Please check your configuration or try again later.</p>
+<h1>Error</h1>
+<p>Oops! Something went wrong with Terraform. Please check your configuration or try again later.</p>
 <img src="https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform Badge">
 
 </body>
