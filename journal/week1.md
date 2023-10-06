@@ -189,7 +189,7 @@ The source argument in a module block allows you to specify where the module sho
 - GitHub
 - Terraform Registry
 
-```go
+```sh
 modules "terrahouse_aws" {
     source = "./modules/terrahouse_aws"
 }
@@ -211,7 +211,7 @@ The provided examples could be outdated or deprecated, especially regarding prov
 Terraform includes a built-in function called fileexists that verifies the existence of a file:
 We used it in our variables.tf nested
 
-```go
+```sh
  validation {
     condition     = fileexists(var.error_html_filepath)
     error_message = "The specified file path for error.html does not exist."
@@ -250,7 +250,7 @@ resource "aws_s3_object" "index_html" {
 Terraform locals provide a way to define local variables. 
 They are useful for transforming and organizing data, giving you a more structured way to reference variables within your configuration.
 
-```go
+```sh
 locals {
   s3_origin_id = "myS3Origin"
 }
@@ -262,7 +262,7 @@ locals {
 
 Terraform data sources allow us to fetch information about existing cloud resources, making it easy to reference them in our Terraform configuration without explicitly defining them.
 
-```go
+```sh
 data "aws_caller_identity" "current" {}
 ```
 
@@ -272,7 +272,7 @@ data "aws_caller_identity" "current" {}
 
 Terraform provides functions like jsonencode which help in converting HCL structures into JSON format.
 
-```go
+```sh
 jsonencode({"hello"="world"})
 
 {"hello":"world"}
@@ -286,10 +286,62 @@ jsonencode({"hello"="world"})
 
 Plain data values such as Local Values and Input Variables don't have any side-effects to plan against and so they aren't valid in replace_triggered_by. You can use terraform_data's behavior of planning an action each time input changes to indirectly use a plain value to trigger replacement.
 
-```go
+```sh
   lifecycle {
     replace_triggered_by = [terraform_data.content_version.output]
     ignore_changes = [etag]
   }
 ```
 [Data](https://developer.hashicorp.com/terraform/language/resources/terraform-data)
+
+## Provisioners
+
+Terraform provisioners allow execution of specific actions on resources during creation or destruction.
+
+ Hashicorp does not recommend frequent use of provisioners. They suggest using configuration management tools like Ansible for more complex tasks.
+
+[Provisioners](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax)
+
+### Local-exec
+
+The local-exec provisioner invokes a local executable after a resource is created. 
+For example, you might use local-exec to invoke a script on the machine where Terraform runs.
+
+```sh
+resource "aws_instance" "web" {
+  # ...
+
+  provisioner "local-exec" {
+    command = "echo The server's IP address is ${self.private_ip}"
+  }
+}
+```
+[Local-exec](https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec)
+
+### Remote-exec
+
+The remote-exec provisioner allows you to execute commands on a remote machine. 
+To use this, you will need to establish a connection, typically via SSH, to the target machine
+
+```sh
+resource "aws_instance" "web" {
+  # ...
+
+  # Establishes connection to be used by all
+  # generic remote provisioners (i.e. file/remote-exec)
+  connection {
+    type     = "ssh"
+    user     = "root"
+    password = var.root_password
+    host     = self.public_ip
+    }
+
+  provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${aws_instance.web.private_ip}",
+    ]
+  }
+}
+```
+[Remote-exec](https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec)
