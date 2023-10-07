@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TerraTowns</title>
+    <title>TerraTown</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background: linear-gradient(#000000, #5C4EE5);
             color: white;
             display: flex;
@@ -25,6 +26,18 @@
             letter-spacing: 2px;
             margin-bottom: 20px;
         }
+        .img-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center; 
+            width: 100%;
+            padding: 10px;
+        }
+        .img1 {
+            max-width: 40vh;
+            height: auto;
+            padding: 20px;
+        }
 
         @media (max-width: 768px) {
             h1 {
@@ -37,8 +50,13 @@
 </head>
 <body>
 
-<h1>Hello Terraformers 👋 </h1>
+<h1>GOAT 🏆 Anime to Watch ! </h1>
 <img src="https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform Badge">
+
+<div class="img-container">
+    <img class="img1" src="/assets/luffy.jpg" alt="luffy">
+    <img class="img1" src="/assets/Yonko.jpg" alt="Yonko">
+</div>
 
 </body>
 </html>
