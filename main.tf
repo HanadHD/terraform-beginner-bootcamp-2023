@@ -37,3 +37,17 @@ provider "terratowns" {
   #  content_version = var.content_version
   #  assets_path = var.assets_path 
 #}
+
+resource "terratowns_home" "home" {
+  name = "GOAT ANIME TO WATCH!"
+  description = <<DESCRIPTION
+One Piece isn't just any anime; it's an epic journey through treacherous seas and mysterious islands. 
+As the crew searches for the legendary treasure, the "One Piece", they face powerful enemies, uncover hidden pasts, and challenge the very definition of a pirate's life. 
+A true storytelling masterpiece, this anime continues to captivate audiences globally, showcasing that sometimes, the journey is even more valuable than the destination. 
+This guide delves into the GOAT anime realm, and One Piece undoubtedly stands as one of my all-time favorites.
+DESCRIPTION
+  #domain_name = module.terrahouse_aws.cloudfront_url
+  domain_name = "3fdq3gz.cloudfront.net"
+  town = "video-valley"
+  content_version = 1
+}
