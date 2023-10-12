@@ -52,3 +52,17 @@ bundle exec ruby server.rb  # Start the server
 ```
 
 All of the code for our websever is installed in our server.rb file
+
+## CRUD
+
+Terraform Provider resources are based on CRUD principles.
+
+**CRUD** stands for:
+
+- **C**: Create
+- **R**: Read
+- **U**: Update
+- **D**: Delete
+
+https://en.wikipedia.org/wiki/Create,_read,_update_and_delete 
+
