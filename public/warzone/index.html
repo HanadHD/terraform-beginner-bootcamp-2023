@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warzone Central</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: #000000;
+            background: linear-gradient( #000000 23%, #780C0B 85%);
+            color: #E1E2E1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            transition: all 0.3s ease-in-out;
+            margin-bottom: 20px;
+        }
+      
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card:hover .card-content {
+            background-color: #FFD700;
+            color: #000;
+        }
+        .card-content {
+            padding: 15px;
+            transition: all 0.3s ease-in-out;
+        }
+        @media(max-width: 350px) {
+            .card {
+                width: 80%;
+            }
+        }
+        .preview {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+        .preview img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+      .img1 {
+        padding-bottom: 10px;
+      }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Warzone Central</h1>
+  <img class="img1" src="https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform Badge">
+    <div class="container">
+        <div class="card">
+            <img src="assets/dropin.jpg" alt="Zone Image" onmouseover="showPreview('zone.jpg')" onmouseout="hidePreview()">
+            <div class="card-content">
+                <h2>Drop-In</h2>
+                <p>Experience the thrill of the drop-in, where every decision counts.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/grau.jpg" alt="Grau Image" onmouseover="showPreview('grau.jpg')" onmouseout="hidePreview()">
+            <div class="card-content">
+                <h2>Loadout</h2>
+                <p>Choose your loadout wisely and outgun your opponents.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/victory.jpg" alt="Victory Image" onmouseover="showPreview('victory.jpg')" onmouseout="hidePreview()">
+            <div class="card-content">
+                <h2>Path to Victory</h2>
+                <p>Strategize, survive, and enjoy the sweet taste of victory</p>
+            </div>
+        </div>
+    <div class="preview" id="preview">
+        <img src="" alt="Preview Image" id="previewImage">
+    </div>
+
+  <script>
+      document.querySelectorAll('.card img').forEach(img => {
+          img.addEventListener('click', () => {
+              const src = img.getAttribute('src');
+              document.getElementById('previewImage').src = src;
+              document.getElementById('preview').style.display = 'flex';
+          });
+      });
+
+      document.getElementById('preview').addEventListener('click', () => {
+          document.getElementById('preview').style.display = 'none';
+      });
+  </script>
+</body>
+</html>
